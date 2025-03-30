@@ -9,9 +9,8 @@ const PORT = 5000;
 dotenv.config();
 
 app.use(cors({
-	origin: 'https://multimedia-app-one.vercel.app/',
+	origin: 'https://multimedia-app-one.vercel.app',
 	methods: ['GET', 'POST'],
-	allowedHeaders: ['Content-Type', 'Authorization'],
   }));
 app.use(express.json());
 
