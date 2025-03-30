@@ -8,14 +8,11 @@ const PORT = 5000;
 
 dotenv.config();
 
-// const corsOptions = {
-// 	origin: 'http://localhost:3000',
-// 	methods: ['GET', 'POST'],
-// 	allowedHeaders: ['Content-Type'],
-// 	credentials: true,
-// };
-
-app.use(cors());
+app.use(cors({
+	origin: 'https://multimedia-app-one.vercel.app/',
+	methods: ['GET', 'POST'],
+	allowedHeaders: ['Content-Type', 'Authorization'],
+  }));
 app.use(express.json());
 
 type ContentType = 'text' | 'image' | 'audio' | 'video';
@@ -84,5 +81,5 @@ app.get('/', (req: Request, res: Response): void => {
 });
 
 app.listen(PORT, () => {
-	console.log(`Server running on http://localhost:${PORT}`);
+	console.log(`Server running on ${PORT}`);
 });
