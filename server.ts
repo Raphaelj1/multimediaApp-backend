@@ -11,6 +11,7 @@ dotenv.config();
 app.use(cors({
 	origin: 'https://multimedia-app-one.vercel.app',
 	methods: ['GET', 'POST'],
+	exposedHeaders: ['Content-Type']
   }));
 app.use(express.json());
 
