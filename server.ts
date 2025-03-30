@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import genAI from './genAI'
+import genAI from './genAI';
 
 const app = express();
 const PORT = 5000;
@@ -33,7 +33,7 @@ const apiKeys = {
 	video: process.env.HUGGINGFACE_API_TOKEN as string,
 };
 
-const multimediaAI = genAI(apiKeys)
+const multimediaAI = genAI(apiKeys);
 
 async function generate(prompt: string, type: ContentType): Promise<string> {
 	switch (type) {
@@ -77,6 +77,10 @@ app.post('/generate', async (req: Request, res: Response): Promise<void> => {
 			error: error.message || 'Internal server error',
 		});
 	}
+});
+
+app.get('/', (req: Request, res: Response): void => {
+	res.json({ message: 'What are you looking for?' });
 });
 
 app.listen(PORT, () => {
