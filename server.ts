@@ -27,7 +27,7 @@ interface GenerateResponse {
 }
 
 const apiKeys = {
-	// text: process.env.GEMINI_API_KEY as string,
+	text: process.env.GEMINI_API_KEY as string,
 	image: process.env.STABILITY_API_KEY as string,
 	audio: process.env.ELEVENLABS_API_KEY as string,
 	video: process.env.HUGGINGFACE_API_TOKEN as string,
