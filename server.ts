@@ -8,11 +8,20 @@ const PORT = 5000;
 
 dotenv.config();
 
-app.use(cors({
-	origin: 'https://multimedia-app-one.vercel.app',
-	methods: ['GET', 'POST'],
-	exposedHeaders: ['Content-Type']
-  }));
+const whitelist = ['https://localhost:3000', 'https://multimedia-app-one.vercel.app'];
+app.use(
+	cors({
+		origin: function (origin, callback) {
+			if (!origin || whitelist.includes(origin)) {
+				callback(null, true);
+			} else {
+				callback(new Error('CORS not allowed for this origin'));
+			}
+		},
+		methods: ['GET', 'POST'],
+		exposedHeaders: ['Content-Type'],
+	})
+);
 app.use(express.json());
 
 type ContentType = 'text' | 'image' | 'audio' | 'video';
