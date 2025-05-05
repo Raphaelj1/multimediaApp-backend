@@ -8,7 +8,7 @@ const PORT = 5000;
 
 dotenv.config();
 
-const whitelist = ['https://localhost:3000', 'https://multimedia-app-one.vercel.app'];
+const whitelist = ['http://localhost:3000', 'https://multimedia-app-one.vercel.app'];
 app.use(
 	cors({
 		origin: function (origin, callback) {
